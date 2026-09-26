@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mcp-write-gate"
+version = "0.2.0"
+description = "Sits between an AI agent and its MCP servers. Reads pass, writes are checked against your lists, and a read-only server refuses every write."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "goran-revops" }]
+keywords = ["mcp", "model context protocol", "ai agents", "claude code", "read-only", "crm", "guardrails"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Security",
+]
+dependencies = ["mcp>=2,<3"]
+
+[project.urls]
+Homepage = "https://github.com/goran-revops/mcp-write-gate"
+Documentation = "https://github.com/goran-revops/mcp-write-gate/blob/main/docs/configuration.md"
+Issues = "https://github.com/goran-revops/mcp-write-gate/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "fastmcp>=4"]
+
+[project.scripts]
+mcp-write-gate = "mcp_write_gate.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["mcp_write_gate*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.goran-revops/mcp-write-gate",
+  "title": "MCP Write Gate",
+  "description": "Sits in front of any MCP server. Reads pass, writes are checked against your lists.",
+  "repository": {
+    "url": "https://github.com/goran-revops/mcp-write-gate",
+    "source": "github"
+  },
+  "version": "0.2.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "mcp-write-gate",
+      "version": "0.2.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [
+        {
+          "type": "positional",
+          "value": "serve"
+        },
+        {
+          "type": "positional",
+          "valueHint": "server_name",
+          "description": "The name the real server was given with mcp-write-gate add",
+          "isRequired": true
+        },
+        {
+          "type": "named",
+          "name": "--config",
+          "description": "Path to gate.json, if it is not in the default gate folder"
+        }
+      ]
+    }
+  ]
+}
