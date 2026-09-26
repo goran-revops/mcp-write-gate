@@ -35,7 +35,7 @@ The agent never holds the real API key. The key stays in the gate's own folder, 
 You need Python 3.10 or newer.
 
 ```bash
-pip install git+https://github.com/goran-revops/mcp-write-gate
+pip install mcp-write-gate
 mcp-write-gate init
 mcp-write-gate add mail -- npx -y your-mail-mcp-server
 ```
