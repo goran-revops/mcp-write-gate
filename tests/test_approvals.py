@@ -101,9 +101,13 @@ def test_the_hold_notice_carries_a_link_to_the_page(home, tmp_path):
 
 
 def test_rotating_local_addresses_does_not_reset_the_login_budget_and_a_right_token_still_works(home, console):
-    base, approver, _agent = console
     import socket
 
+    try:
+        socket.create_server(("127.0.0.2", 0)).close()
+    except OSError:
+        pytest.skip("this system only has 127.0.0.1 (macOS)")
+    base, approver, _agent = console
     port = int(base.rsplit(":", 1)[1])
     statuses = []
     for last in range(2, 9):
